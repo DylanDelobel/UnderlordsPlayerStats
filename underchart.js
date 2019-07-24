@@ -175,15 +175,15 @@ $('#loadStats').on('click', function() {
 				datasets: [{
 					data: finalRank,
 					backgroundColor: [
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
-						"#0eeb49",
+						"#6be585",
+						"#79d07f",
+						"#8eb276",
+						"#9d9c70",
+						"#aa896a",
+						"#b77564",
+						"#c26760",
+						"#d24e59",
+						"#dd3e54",
 					]
 				}],
 				labels: [
