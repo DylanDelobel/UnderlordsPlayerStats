@@ -37,6 +37,7 @@ $('#loadStats').on('click', function() {
 
 
 		let progressOverall = [];
+		let progressLabel = [];
 
 
 		// copy paste because i need to sleep
@@ -55,7 +56,8 @@ $('#loadStats').on('click', function() {
 				totalMatchLength += parseInt(row[2]);
 				//3 => StartTime
 				let matchStartDate = row[3].substring(0, row[3].length-4);
-				progressOverall.push({x: matchStartDate, y: parseInt(row[11])});
+				progressOverall.push(parseInt(row[11]));
+				progressLabel.push(totalMatch);
 				//4 => ServerVersion
 				//5 => ClusterID
 				//6 => MatchRounds
@@ -281,30 +283,27 @@ $('#loadStats').on('click', function() {
             	},
 			}
 		});
-
+		
+		progressOverall = progressOverall.reverse();
 
 		let chart = new Chart($('#finalRankOverTime'), {
-		    type: 'bubble',
+		    type: 'line',
 		    data: {
 		    	datasets: [{
 					data: progressOverall,
 					backgroundColor: "#FFFFFF",
+					fill: false,
+					borderColor: "#a6a09f",
 					radius: 5,
-					pointStyle: "rectRot",
+					lineTension: 0,
 				}],
+				labels: progressLabel,
 		    },
 		    options: {
 		    	legend: {
 		    		display: false,
 		    	},
 		        scales: {
-		            xAxes: [{
-		                type: 'time',
-		                time: {
-		                    unit: 'day',
-		                    distribution: 'linear'
-		                }
-		            }],
 		            yAxes: [{
 		                ticks: {
 	                		reverse: true,
