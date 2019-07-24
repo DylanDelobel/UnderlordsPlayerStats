@@ -1,4 +1,15 @@
 console.log('script');
+
+dateString = "2019-06-15 01:49:29 GMT";
+dateStr = dateString.substring(0, dateString.length-4); 
+let date = moment(dateStr);
+console.log(date)
+
+
+		
+
+		
+
 $('#loadStats').on('click', function() {
 	console.log('load data');
 	let userData = JSON.parse($('#userData').val());
@@ -37,6 +48,10 @@ $('#loadStats').on('click', function() {
 		let last20totalRoundSurvived = 0;
 		let last20top1 = 0;
 
+
+		let progressOverall = [];
+
+
 		// copy paste because i need to sleep
 		userData.forEach(function(row) {
 			if (removeBotGame) {
@@ -44,6 +59,7 @@ $('#loadStats').on('click', function() {
 					return;
 				}
 			}
+			if (parseInt(row[11]) === 0) {return;}
 			totalMatch++;
 				//0 => MatchID
 				//1 => Mode
@@ -51,6 +67,8 @@ $('#loadStats').on('click', function() {
 				//2 => MatchLength
 				totalMatchLength += parseInt(row[2]);
 				//3 => StartTime
+				let matchStartDate = row[3].substring(0, row[3].length-4);
+				progressOverall.push({x: matchStartDate, y: parseInt(row[11])});
 				//4 => ServerVersion
 				//5 => ClusterID
 				//6 => MatchRounds
@@ -78,9 +96,7 @@ $('#loadStats').on('click', function() {
 				platformPlayed[row[15] - 1]++;
 
 
-
 				if (totalMatch < 21) {
-					console.log('toto')
 					//0 => MatchID
 					//1 => Mode
 					//last20modePlayed[row[1] -1]++;
@@ -114,6 +130,8 @@ $('#loadStats').on('click', function() {
 					//platformPlayed[row[15] - 1]++;
 				}
 		});
+
+		console.log(progressOverall);
 
 		let avgGameTime = totalMatchLengthSurvived/totalMatch;
 		let minutes = Math.floor(avgGameTime / 60);
@@ -280,7 +298,36 @@ $('#loadStats').on('click', function() {
 		});
 
 
-
+		let chart = new Chart($('#finalRankOverTime'), {
+		    type: 'bubble',
+		    data: {
+		    	datasets: [{
+					data: progressOverall,
+					backgroundColor: "#FFFFFF",
+					radius: 5,
+					pointStyle: "rectRot",
+				}],
+		    },
+		    options: {
+		    	legend: {
+		    		display: false,
+		    	},
+		        scales: {
+		            xAxes: [{
+		                type: 'time',
+		                time: {
+		                    unit: 'day',
+		                    distribution: 'linear'
+		                }
+		            }],
+		            yAxes: [{
+		                ticks: {
+	                		reverse: true,
+		                }
+		            }],
+		        }
+		    }
+		});
 
 
 	})
