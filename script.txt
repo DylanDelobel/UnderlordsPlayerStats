@@ -1,0 +1,25 @@
+let data = [];
+
+function gather_history() {
+    setTimeout(function () {
+        if (document.getElementById('load_more_button') && document.getElementById('load_more_button').style.display !== 'none') {
+            document.getElementById('load_more_button').click();
+            gather_history();
+        } else {
+            let table = document.getElementsByClassName('generic_kv_table')[0];
+
+            for (let i = 1; i < table.rows.length; i++) {
+                let tableRow = table.rows[i];
+                let rowData = [];
+
+                for (let j = 0; j < tableRow.cells.length; j++) {
+                    rowData.push(tableRow.cells[j].innerHTML);
+                }
+                data.push(rowData);
+            }
+            alert('Script done, now type\ncopy(data)')
+        }
+    }, 1000);
+}
+
+gather_history();
