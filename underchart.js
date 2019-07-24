@@ -1,20 +1,7 @@
-console.log('script');
-
-dateString = "2019-06-15 01:49:29 GMT";
-dateStr = dateString.substring(0, dateString.length-4); 
-let date = moment(dateStr);
-console.log(date)
-
-
-		
-
-		
-
 $('#loadStats').on('click', function() {
-	console.log('load data');
+	console.log('Loading data...');
 	let userData = JSON.parse($('#userData').val());
 	let removeBotGame = $('#removeBotGame').is(':checked');
-	console.log(removeBotGame);
 
 	let modePlayed = [
 		0, // Multiplayer
@@ -130,8 +117,6 @@ $('#loadStats').on('click', function() {
 					//platformPlayed[row[15] - 1]++;
 				}
 		});
-
-		console.log(progressOverall);
 
 		let avgGameTime = totalMatchLengthSurvived/totalMatch;
 		let minutes = Math.floor(avgGameTime / 60);
@@ -329,5 +314,5 @@ $('#loadStats').on('click', function() {
 		    }
 		});
 
-
+		console.log('Done.')
 	})
