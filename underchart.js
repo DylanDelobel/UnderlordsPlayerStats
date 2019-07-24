@@ -135,7 +135,7 @@ $('#loadStats').on('click', function() {
 		$('#last20startRankAverage').text('Average starting rank: ' + (last20totalPlayerSlot/20).toFixed(2));
 		$('#last20timeSurvived').text('Average game time: ' + minutes + 'm ' + seconds.toFixed(0) + 's');
 		$('#last20roundAverage').text('Average survived rounds: ' + (last20totalRoundSurvived/20).toFixed(2));
-		$('#last20gameWon').text('Game won: ' + top1);
+		$('#last20gameWon').text('Game won: ' + last20top1);
 
 		let platformChart = new Chart($('#platformChart'), {
 			type: 'doughnut',
