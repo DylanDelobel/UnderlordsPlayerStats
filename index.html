@@ -3,11 +3,11 @@
 <head>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92514005-4"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	  gtag('config', 'UA-92514005-4');
+		gtag('config', 'UA-92514005-4');
 	</script>
 
 	<meta charset="utf-8">
@@ -15,12 +15,13 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
+	<script src="https://kit.fontawesome.com/ae926d1e75.js"></script>
 	<style type="text/css">
-	body {
-		background-color: #000;
-	}
-</style>
-<title>Underlords Stats</title>
+		body {
+			background-color: #000;
+		}
+	</style>
+	<title>Underlords Stats</title>
 </head>
 <body>
 	<div class="container">
@@ -28,29 +29,29 @@
 		<h2 class="text-white text-center">Player Statistic</h2>
 
 		<div class="col-12 text-white">
-            <ol>
-                <li>
-                    Copy <a href="./script.txt" target="_blank">this script</a>
-                </li>
-                <li><a href="https://steamcommunity.com/my/gcpd/1046930/?category=Games&amp;tab=Matches" target="_blank">
-                	Open personnal underlords stats page
-                    (you have to log in Steam)</a></li>
-                <li>Open browser console (<kbd>Ctrl + Shift + J</kbd> for Chrome, <kbd>Ctrl + Alt + I</kbd> for Safari, <kbd>Ctrl + Shift + K</kbd> for
-                    Firefox)
-                </li>
-                <li>Paste script and wait, script will auto-open full match history
-                </li>
-                <li>After getting alert about script done, write "copy(data)" into console (without quote marks)</li>
-                <li>Paste below copied data and enjoy your stats</li>
-            </ol>
-        </div>
+			<ol>
+				<li>
+					Copy <a href="./script.txt" target="_blank">this script</a>
+				</li>
+				<li><a href="https://steamcommunity.com/my/gcpd/1046930/?category=Games&amp;tab=Matches" target="_blank">
+					Open personnal underlords stats page
+				(you have to log in Steam)</a></li>
+				<li>Open the browser console (<kbd>Ctrl + Shift + J</kbd> for <i class="fab fa-chrome"></i>, <kbd>Ctrl + Alt + I</kbd> for <i class="fab fa-safari"></i>, <kbd>Ctrl + Shift + K</kbd> for
+					<i class="fab fa-firefox"></i>)
+				</li>
+				<li>Paste the script, hit enter and wait, script will auto-open full match history
+				</li>
+				<li>After getting alert about script done, write <kbd>copy(data)</kbd></li>
+				<li>Paste below copied data and enjoy your stats</li>
+			</ol>
+		</div>
 
 		<div class="input-group mb-3">
 			<div class="input-group-prepend">
-		    <div class="input-group-text">
-		      <input type="checkbox" aria-label="Checkbox for following text input" id="removeBotGame"> Remove bot game
-		    </div>
-		  </div>
+				<div class="input-group-text">
+					<input type="checkbox" aria-label="Checkbox for following text input" id="removeBotGame"> Remove bot game
+				</div>
+			</div>
 			<input type="text" class="form-control" placeholder="Paste data here" id="userData">
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary" type="button" id="loadStats">Go!</button>
@@ -116,10 +117,14 @@
 
 			
 		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<span class="text-muted">Made with <span style="color: #e25555;">❤️</span> ~ All DotA Underlords assets belong to Valve © 2019 Valve Software.</span>
+			</div>
+		</footer>
 	</div>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script
 	src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
