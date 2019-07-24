@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
+	<style type="text/css">
+	body {
+		background-color: #000;
+	}
+</style>
+<title>Underlords Stats</title>
+</head>
+<body>
+	<div class="container">
+		<img src="https://i.imgur.com/N8LFNIE.png" class="img-fluid mx-auto d-block mt-5" alt="responsive image">
+		<h2 class="text-white text-center">Player Statistic</h2>
+
+		<div class="col-12 text-white">
+            <ol>
+                <li>
+                    Copy <a href="https://gist.githubusercontent.com/DylanDelobel/8ff00ac4e94ad3c6cb3d8bd6e38f049e/raw/0aa8a3f6e4cfc0b88426089ea7169766e9703a1f/gather.js" target="_blank">this script</a>
+                </li>
+                <li><a href="https://steamcommunity.com/my/gcpd/1046930/?category=Games&amp;tab=Matches" target="_blank">
+                	Open personnal underlords stats page
+                    (you have to log in Steam)</a></li>
+                <li>Open browser console (<kbd>Ctrl + Shift + J</kbd> for Chrome, <kbd>Ctrl + Alt + I</kbd> for Safari, <kbd>Ctrl + Shift + K</kbd> for
+                    Firefox)
+                </li>
+                <li>Paste script and wait, script will auto-open full match history
+                </li>
+                <li>After getting alert about script done, write "copy(data)" into console (without quote marks)</li>
+                <li>Paste here copied data and enjoy your stats</li>
+            </ol>
+        </div>
+
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="Paste data here" id="userData">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button" id="loadStats">Go!</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card text-white bg-dark mb-6">
+					<div class="card-header">Global Stats</div>
+					<div class="card-body">
+						<div class="card-text">
+							<h3 id="totalGames" class="text-white"></h3>
+							<h3 id="rankAverage" class="text-white"></h3>
+							<h3 id="gameWon" class="text-white"></h3>
+							<canvas id="modeChart" width="100%"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card text-white bg-dark mb-6">
+					<div class="card-header">Game Stats</div>
+					<div class="card-body">
+						<div class="card-text">
+							<h3 id="roundAverage" class="text-white"></h3>
+							<h3 id="startRankAverage" class="text-white"></h3>
+							<h3 id="timeSurvived" class="text-white"></h3>
+							<canvas id="platformChart" width="100%"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div class="row">
+				<div class="col-md-12 mt-5">
+					<canvas id="finalRankChart" width="100%" height="30px"></canvas>
+				</div>
+			</div>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script
+	src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+	<script type="text/javascript" src="./underchart.js"></script>
+</body>
+</html>
