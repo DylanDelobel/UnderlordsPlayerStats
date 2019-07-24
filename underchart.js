@@ -115,12 +115,14 @@ $('#loadStats').on('click', function() {
 				}
 		});
 
-
-
 		let avgGameTime = totalMatchLengthSurvived/totalMatch;
-		var minutes = Math.floor(avgGameTime / 60);
-		var seconds = avgGameTime - minutes * 60;
-		console.log(finalRank);
+		let minutes = Math.floor(avgGameTime / 60);
+		let seconds = avgGameTime - minutes * 60;
+
+		let last20avgGameTime = last20totalMatchLengthSurvived/20;
+		let last20minutes = Math.floor(last20avgGameTime / 60);
+		let last20seconds = last20avgGameTime - last20minutes * 60;
+
 
 		$('#totalGames').text('Number of games: ' + totalMatch);
 		$('#rankAverage').text('Average final rank: ' + (totalFinalRank/totalMatch).toFixed(2));
@@ -133,7 +135,7 @@ $('#loadStats').on('click', function() {
 		$('#last20totalGames').text('Number of games: ' + 20);
 		$('#last20rankAverage').text('Average final rank: ' + (last20totalFinalRank/20).toFixed(2));
 		$('#last20startRankAverage').text('Average starting rank: ' + (last20totalPlayerSlot/20).toFixed(2));
-		$('#last20timeSurvived').text('Average game time: ' + minutes + 'm ' + seconds.toFixed(0) + 's');
+		$('#last20timeSurvived').text('Average game time: ' + last20minutes + 'm ' + last20seconds.toFixed(0) + 's');
 		$('#last20roundAverage').text('Average survived rounds: ' + (last20totalRoundSurvived/20).toFixed(2));
 		$('#last20gameWon').text('Game won: ' + last20top1);
 
