@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92514005-4"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -61,13 +60,16 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card text-white bg-dark mb-6">
-					<div class="card-header">Global Stats</div>
+					<div class="card-header">Overall Stats</div>
 					<div class="card-body">
 						<div class="card-text">
 							<h3 id="totalGames" class="text-white"></h3>
-							<h3 id="rankAverage" class="text-white"></h3>
 							<h3 id="gameWon" class="text-white"></h3>
-							<canvas id="modeChart" width="100%"></canvas>
+							<h3 id="rankAverage" class="text-white"></h3>
+							<h3 id="roundAverage" class="text-white"></h3>
+							<h3 id="startRankAverage" class="text-white"></h3>
+							<h3 id="timeSurvived" class="text-white"></h3>
+							<canvas id="finalRankChart" width="100%"></canvas>
 						</div>
 					</div>
 				</div>
@@ -75,13 +77,38 @@
 
 			<div class="col-md-6">
 				<div class="card text-white bg-dark mb-6">
-					<div class="card-header">Game Stats</div>
+					<div class="card-header">Last 20 games</div>
 					<div class="card-body">
 						<div class="card-text">
-							<h3 id="roundAverage" class="text-white"></h3>
-							<h3 id="startRankAverage" class="text-white"></h3>
-							<h3 id="timeSurvived" class="text-white"></h3>
-							<canvas id="platformChart" width="100%"></canvas>
+							<h3 id="last20totalGames" class="text-white"></h3>
+							<h3 id="last20gameWon" class="text-white"></h3>
+							<h3 id="last20rankAverage" class="text-white"></h3>
+							<h3 id="last20roundAverage" class="text-white"></h3>
+							<h3 id="last20startRankAverage" class="text-white"></h3>
+							<h3 id="last20timeSurvived" class="text-white"></h3>
+							<canvas id="last20finalRankChart" width="100%"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6 mt-3">
+				<div class="card text-white bg-dark mb-6">
+					<div class="card-header">Game mode</div>
+					<div class="card-body">
+						<div class="card-text">
+							<canvas id="modeChart" width="100%" height="30px"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 my-3">
+				<div class="card text-white bg-dark mb-6">
+					<div class="card-header">Platform</div>
+					<div class="card-body">
+						<div class="card-text">
+							<canvas id="platformChart" width="100%" height="30px"></canvas>
 						</div>
 					</div>
 				</div>
@@ -89,12 +116,6 @@
 
 			
 		</div>
-
-		<div class="row">
-				<div class="col-md-12 mt-5">
-					<canvas id="finalRankChart" width="100%" height="30px"></canvas>
-				</div>
-			</div>
 	</div>
 
 	<!-- Optional JavaScript -->

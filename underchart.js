@@ -26,79 +26,96 @@ $('#loadStats').on('click', function() {
 		let totalRoundSurvived = 0;
 		let top1 = 0;
 
+
+		let last20finalRank = [0,0,0,0,0,0,0,0];
+		let last20totalMatch = 0;
+		let last20totalMatchLength = 0;
+		let last20totalMatchLengthSurvived = 0;
+		let last20totalFinalRank = 0;
+		let last20totalMatchRound = 0;
+		let last20totalPlayerSlot = 0;
+		let last20totalRoundSurvived = 0;
+		let last20top1 = 0;
+
 		// copy paste because i need to sleep
 		userData.forEach(function(row) {
-			console.log(row[1]);
 			if (removeBotGame) {
-				if (row[1] == 1) {
-					totalMatch++;
-				//0 => MatchID
-				//1 => Mode
-				modePlayed[row[1] -1]++;
-				//2 => MatchLength
-				totalMatchLength += parseInt(row[2]);
-				//3 => StartTime
-				//4 => ServerVersion
-				//5 => ClusterID
-				//6 => MatchRounds
-				totalMatchRound += parseInt(row[6]);
-				//7 => PlayerSlot
-				totalPlayerSlot += parseInt(row[7]);
-				//8 => Team
-				//9 => Flags
-				//10 => PlayerState
-				//11 => FinalRank
-				totalFinalRank += parseInt(row[11]);
-				if (parseInt(row[11]) === 1) {
-					top1++;
+				if (row[1] == 2) {
+					return;
 				}
-				
-				if (parseInt(row[11]) !== 0) {
-					finalRank[parseInt(row[11])-1] += 1;
-				}
-				//12 => SurvivalTime
-				totalMatchLengthSurvived += parseInt(row[12]);
-				//13 => Party
-				//14 => RoundSurvived
-				totalRoundSurvived += parseInt(row[14]);
-				//15 => Platform
-				platformPlayed[row[15] - 1]++;
-				}
-			} else {
-				totalMatch++;
-				//0 => MatchID
-				//1 => Mode
-				modePlayed[row[1] -1]++;
-				//2 => MatchLength
-				totalMatchLength += parseInt(row[2]);
-				//3 => StartTime
-				//4 => ServerVersion
-				//5 => ClusterID
-				//6 => MatchRounds
-				totalMatchRound += parseInt(row[6]);
-				//7 => PlayerSlot
-				totalPlayerSlot += parseInt(row[7]);
-				//8 => Team
-				//9 => Flags
-				//10 => PlayerState
-				//11 => FinalRank
-				totalFinalRank += parseInt(row[11]);
-				if (parseInt(row[11]) === 1) {
-					top1++;
-				}
-				
-				if (parseInt(row[11]) !== 0) {
-					finalRank[parseInt(row[11])-1] += 1;
-				}
-				//12 => SurvivalTime
-				totalMatchLengthSurvived += parseInt(row[12]);
-				//13 => Party
-				//14 => RoundSurvived
-				totalRoundSurvived += parseInt(row[14]);
-				//15 => Platform
-				platformPlayed[row[15] - 1]++;
 			}
-	});
+			totalMatch++;
+				//0 => MatchID
+				//1 => Mode
+				modePlayed[row[1] -1]++;
+				//2 => MatchLength
+				totalMatchLength += parseInt(row[2]);
+				//3 => StartTime
+				//4 => ServerVersion
+				//5 => ClusterID
+				//6 => MatchRounds
+				totalMatchRound += parseInt(row[6]);
+				//7 => PlayerSlot
+				totalPlayerSlot += parseInt(row[7]);
+				//8 => Team
+				//9 => Flags
+				//10 => PlayerState
+				//11 => FinalRank
+				totalFinalRank += parseInt(row[11]);
+				if (parseInt(row[11]) === 1) {
+					top1++;
+				}
+				
+				if (parseInt(row[11]) !== 0) {
+					finalRank[parseInt(row[11])-1] += 1;
+				}
+				//12 => SurvivalTime
+				totalMatchLengthSurvived += parseInt(row[12]);
+				//13 => Party
+				//14 => RoundSurvived
+				totalRoundSurvived += parseInt(row[14]);
+				//15 => Platform
+				platformPlayed[row[15] - 1]++;
+
+
+
+				if (totalMatch < 21) {
+					console.log('toto')
+					//0 => MatchID
+					//1 => Mode
+					//last20modePlayed[row[1] -1]++;
+					//2 => MatchLength
+					last20totalMatchLength += parseInt(row[2]);
+					//3 => StartTime
+					//4 => ServerVersion
+					//5 => ClusterID
+					//6 => MatchRounds
+					last20totalMatchRound += parseInt(row[6]);
+					//7 => PlayerSlot
+					last20totalPlayerSlot += parseInt(row[7]);
+					//8 => Team
+					//9 => Flags
+					//10 => PlayerState
+					//11 => FinalRank
+					last20totalFinalRank += parseInt(row[11]);
+					if (parseInt(row[11]) === 1) {
+						last20top1++;
+					}
+					
+					if (parseInt(row[11]) !== 0) {
+						last20finalRank[parseInt(row[11])-1] += 1;
+					}
+					//12 => SurvivalTime
+					last20totalMatchLengthSurvived += parseInt(row[12]);
+					//13 => Party
+					//14 => RoundSurvived
+					last20totalRoundSurvived += parseInt(row[14]);
+					//15 => Platform
+					//platformPlayed[row[15] - 1]++;
+				}
+		});
+
+
 
 		let avgGameTime = totalMatchLengthSurvived/totalMatch;
 		var minutes = Math.floor(avgGameTime / 60);
@@ -111,6 +128,14 @@ $('#loadStats').on('click', function() {
 		$('#timeSurvived').text('Average game time: ' + minutes + 'm ' + seconds.toFixed(0) + 's');
 		$('#roundAverage').text('Average survived rounds: ' + (totalRoundSurvived/totalMatch).toFixed(2));
 		$('#gameWon').text('Game won: ' + top1);
+
+		// obvious for the same height
+		$('#last20totalGames').text('Number of games: ' + 20);
+		$('#last20rankAverage').text('Average final rank: ' + (last20totalFinalRank/20).toFixed(2));
+		$('#last20startRankAverage').text('Average starting rank: ' + (last20totalPlayerSlot/20).toFixed(2));
+		$('#last20timeSurvived').text('Average game time: ' + minutes + 'm ' + seconds.toFixed(0) + 's');
+		$('#last20roundAverage').text('Average survived rounds: ' + (last20totalRoundSurvived/20).toFixed(2));
+		$('#last20gameWon').text('Game won: ' + top1);
 
 		let platformChart = new Chart($('#platformChart'), {
 			type: 'doughnut',
@@ -168,7 +193,6 @@ $('#loadStats').on('click', function() {
 			}
 		});
 
-		console.log(finalRank);
 		let finalRankChart = new Chart($('#finalRankChart'), {
 			type: 'bar',
 			data: {
@@ -210,4 +234,51 @@ $('#loadStats').on('click', function() {
             	},
 			}
 		});
+
+		let last20finalRankChart = new Chart($('#last20finalRankChart'), {
+			type: 'bar',
+			data: {
+				datasets: [{
+					data: last20finalRank,
+					backgroundColor: [
+						"#6be585",
+						"#79d07f",
+						"#8eb276",
+						"#9d9c70",
+						"#aa896a",
+						"#b77564",
+						"#c26760",
+						"#d24e59",
+						"#dd3e54",
+					]
+				}],
+				labels: [
+					'First',
+					'Second',
+					'Third',
+					'Fourth',
+					'Fifth',
+					'Sixth',
+					'Seventh',
+					'Eighth'
+				]
+			},
+			options: {
+				legend: {
+					display: false,
+				},
+				scales: {
+	                yAxes: [{
+	                    ticks: {
+	                        beginAtZero: true
+	                    }
+	                }]
+            	},
+			}
+		});
+
+
+
+
+
 	})
