@@ -2,6 +2,8 @@ console.log('script');
 $('#loadStats').on('click', function() {
 	console.log('load data');
 	let userData = JSON.parse($('#userData').val());
+	let removeBotGame = $('#removeBotGame').is(':checked');
+	console.log(removeBotGame);
 
 	let modePlayed = [
 		0, // Multiplayer
@@ -24,40 +26,78 @@ $('#loadStats').on('click', function() {
 		let totalRoundSurvived = 0;
 		let top1 = 0;
 
-
+		// copy paste because i need to sleep
 		userData.forEach(function(row) {
-			totalMatch++;
-		//0 => MatchID
-		//1 => Mode
-		modePlayed[row[1] -1]++;
-		//2 => MatchLength
-		totalMatchLength += parseInt(row[2]);
-		//3 => StartTime
-		//4 => ServerVersion
-		//5 => ClusterID
-		//6 => MatchRounds
-		totalMatchRound += parseInt(row[6]);
-		//7 => PlayerSlot
-		totalPlayerSlot += parseInt(row[7]);
-		//8 => Team
-		//9 => Flags
-		//10 => PlayerState
-		//11 => FinalRank
-		totalFinalRank += parseInt(row[11]);
-		if (parseInt(row[11]) === 1) {
-			top1++;
-		}
-		
-		if (parseInt(row[11]) !== 0) {
-			finalRank[parseInt(row[11])-1] += 1;
-		}
-		//12 => SurvivalTime
-		totalMatchLengthSurvived += parseInt(row[12]);
-		//13 => Party
-		//14 => RoundSurvived
-		totalRoundSurvived += parseInt(row[14]);
-		//15 => Platform
-		platformPlayed[row[15] - 1]++;
+			console.log(row[1]);
+			if (removeBotGame) {
+				if (row[1] == 1) {
+					totalMatch++;
+				//0 => MatchID
+				//1 => Mode
+				modePlayed[row[1] -1]++;
+				//2 => MatchLength
+				totalMatchLength += parseInt(row[2]);
+				//3 => StartTime
+				//4 => ServerVersion
+				//5 => ClusterID
+				//6 => MatchRounds
+				totalMatchRound += parseInt(row[6]);
+				//7 => PlayerSlot
+				totalPlayerSlot += parseInt(row[7]);
+				//8 => Team
+				//9 => Flags
+				//10 => PlayerState
+				//11 => FinalRank
+				totalFinalRank += parseInt(row[11]);
+				if (parseInt(row[11]) === 1) {
+					top1++;
+				}
+				
+				if (parseInt(row[11]) !== 0) {
+					finalRank[parseInt(row[11])-1] += 1;
+				}
+				//12 => SurvivalTime
+				totalMatchLengthSurvived += parseInt(row[12]);
+				//13 => Party
+				//14 => RoundSurvived
+				totalRoundSurvived += parseInt(row[14]);
+				//15 => Platform
+				platformPlayed[row[15] - 1]++;
+				}
+			} else {
+				totalMatch++;
+				//0 => MatchID
+				//1 => Mode
+				modePlayed[row[1] -1]++;
+				//2 => MatchLength
+				totalMatchLength += parseInt(row[2]);
+				//3 => StartTime
+				//4 => ServerVersion
+				//5 => ClusterID
+				//6 => MatchRounds
+				totalMatchRound += parseInt(row[6]);
+				//7 => PlayerSlot
+				totalPlayerSlot += parseInt(row[7]);
+				//8 => Team
+				//9 => Flags
+				//10 => PlayerState
+				//11 => FinalRank
+				totalFinalRank += parseInt(row[11]);
+				if (parseInt(row[11]) === 1) {
+					top1++;
+				}
+				
+				if (parseInt(row[11]) !== 0) {
+					finalRank[parseInt(row[11])-1] += 1;
+				}
+				//12 => SurvivalTime
+				totalMatchLengthSurvived += parseInt(row[12]);
+				//13 => Party
+				//14 => RoundSurvived
+				totalRoundSurvived += parseInt(row[14]);
+				//15 => Platform
+				platformPlayed[row[15] - 1]++;
+			}
 	});
 
 		let avgGameTime = totalMatchLengthSurvived/totalMatch;
