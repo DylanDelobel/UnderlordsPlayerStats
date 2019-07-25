@@ -55,7 +55,7 @@ $('#loadStats').on('click', function () {
             }
         }
         if (optionRemoveShortGame) {
-            if (row[2] < 300) {
+            if (parseInt(row[2]) <= 300) {
                 return;
             }
         }
